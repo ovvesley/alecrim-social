@@ -34,6 +34,14 @@ function db_select_post()
     return $res;
 }
 
+function db_select_my_post($idUsuario)
+{
+    // header("content-type:image/jpeg");
+    $select = "SELECT * FROM Postagem WHERE idUsuario  ='$idUsuario' ORDER BY idPostagem DESC";
+    $res = query_dataBase("alecrim_social", $select);
+    return $res;
+}
+
 function fetch_user($username)
 {
     $queryVerificar = "SELECT * FROM Usuario WHERE username ='$username'";

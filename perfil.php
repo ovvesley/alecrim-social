@@ -6,15 +6,13 @@ require("./db_requests.php");
 function checkSession($USER_INFO)
 {
     if ($USER_INFO) {
-        var_dump($USER_INFO);
-        echo ('SESSÂO EXISTENTE');
         return true;
     } else {
         header("location: registerFailed.html");
         return false;
     }
 }
-function render_post($username, $name, $image, $message)
+function render_post_with_image($username, $name, $image, $message)
 {
     echo "           
                     <div class='card gedf-card m-2'>
@@ -30,6 +28,29 @@ function render_post($username, $name, $image, $message)
                         </div>
                         <div class='card-body'>
                             <img class='rounded card-img' src='data:image/jpg;base64, {$image}' />
+                            <p class='m-0 card-text'>
+                                <h5> {$message} </h5>                                
+                            </p>
+                        </div>
+                    </div>
+            
+        ";
+}
+function render_post_no_image($username, $name, $message)
+{
+    echo "           
+                    <div class='card gedf-card m-2'>
+                        <div class='card-header'>
+                            <div class='d-flex align-items-center'>
+                                <div class='d-flex align-items-center'>
+                                    <div class=''>
+                                        <div class=' m-0'>@{$username}</div>
+                                        <div class=' text-muted'>{$name}</div>
+                                    </div>
+                                </div>                                
+                            </div>
+                        </div>
+                        <div class='card-body'>
                             <p class='m-0 card-text'>
                                 <h5> {$message} </h5>                                
                             </p>
@@ -74,42 +95,135 @@ function render_post($username, $name, $image, $message)
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav m-auto mt-2 mt-lg-0">
-                <li class="nav-item ">
+                <li class="nav-item">
                     <a class="nav-link" href="./feed.php">Feed</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link fa fa-plus mt-2" id="addPostagemModal" href="#"></a>
+                    <a class="nav-link" id="addPostagemModal" class="btn btn-primary d-flex align-self-center" data-toggle="modal" data-target="#modalExemplo" href="#">
+                        <span class=" fa fa-plus">
+                        </span>
+
+                    </a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="./perfil.php">Minhas Publicações<span class="sr-only">(current)</span></a>
                 </li>
+                <form action="destruir.php">
+                    <button class="btn btn-sm">
+                        SAIR<span class="badge badge-warning "></span>
+                    </button>
+                </form>
             </ul>
         </div>
+        <span class="">
+            <form action="destruir.php">
+                <button class="btn btn-sm d-none d-md-block">
+                    SAIR<span class="badge badge-warning "></span>
+                </button>
+            </form>
+
+        </span>
         <span class="">Bem Vindo
             <?php
-            echo "$login_username"
+            echo $_SESSION['USER_INFO']['name'];
             ?>
         </span>
     </nav>
 
 
+    <?php
+
+    $resMyPubs = db_select_my_post($_SESSION['USER_INFO']['userid']);
+
+    ?>
+
     <div class="container">
         <div class="row mt-5">
             <div class="col-12">
                 <div class="row">
-                  
-                        <?php
-                        for ($i = 1; $i <= 10; $i++) {
-                            echo("  <div class='col-md-4 col-12'>");
-                            render_post("vvesly", 'Wesley Santos', null, "aaaasjkasssssssssssssaa");
-                            echo("</div>");
-                        }                       
+                    <?php
+                    $post = mysqli_fetch_assoc($resMyPubs);
+                    while ($post) {
 
-                        ?>
-                    </div>
+                        echo ("  <div class='col-md-4 col-12'>");
+                        $userInfoPost = fetch_user_id($post['idUsuario']);
+                        if (base64_encode($post['image']) != null)
+                            render_post_with_image($userInfoPost['username'], $userInfoPost['name'], base64_encode($post['image']), $post['message']);
+                        else
+                            render_post_no_image($userInfoPost['username'], $userInfoPost['name'], $post['message']);
+
+                        echo ("</div>");
+                        $post = mysqli_fetch_assoc($resMyPubs);
+                    }
+
+                    ?>
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Modal -->
+
+    <div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Nova Publicação</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="upload.php" method="POST" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="card gedf-card">
+                            <div class="card-header">
+                                <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="posts-tab" data-toggle="tab" href="#posts" role="tab" aria-controls="posts" aria-selected="true">Make
+                                            a publication </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="images-tab" data-toggle="tab" role="tab" aria-controls="images" aria-selected="false" href="#images">Images</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
+                                        <div class="form-group">
+                                            <label class="sr-only" for="message">post</label>
+                                            <textarea class="form-control" id="message" rows="3" placeholder="What are you thinking?" name="message"></textarea>
+                                        </div>
+
+                                    </div>
+                                    <div class="tab-pane fade" id="images" role="tabpanel" aria-labelledby="images-tab">
+                                        <div class="form-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" name="imageToUpload" id="imageToUpload">
+                                                <label class="custom-file-label" for="customFile">Upload image</label>
+                                            </div>
+                                        </div>
+                                        <div class="py-4"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="modal-footer">
+                        <div class="btn-toolbar justify-content-between">
+                            <div class="btn-group">
+                                <button type="submit" class="btn btn-primary">share</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     </div>
 
 

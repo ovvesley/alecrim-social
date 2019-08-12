@@ -28,8 +28,6 @@
     function checkSession($USER_INFO)
     {
         if ($USER_INFO) {
-            var_dump($USER_INFO);
-            echo ('SESSÂO EXISTENTE');
             return true;
         } else {
             header("location: registerFailed.html");
@@ -49,7 +47,11 @@
                     <a class="nav-link" href="./feed.php">Feed</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link fa fa-plus mt-2" id="addPostagemModal" class="btn btn-primary" data-toggle="modal" data-target="#modalExemplo" href="#"></a>
+                    <a class="nav-link" id="addPostagemModal" class="btn btn-primary d-flex align-self-center" data-toggle="modal" data-target="#modalExemplo" href="#">
+                        <span class=" fa fa-plus">                            
+                        </span>
+
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="./perfil.php">Minhas Publicações<span class="sr-only">(current)</span></a>
@@ -58,7 +60,7 @@
         </div>
         <span class="">
             <form action="destruir.php">
-                <<button class="btn btn-sm">
+                <button class="btn btn-sm">
                     SAIR<span class="badge badge-warning "></span>
                     </button>
             </form>
@@ -72,7 +74,7 @@
     </nav>
     <div class="container">
         <?php
-        function render_post($username, $name, $image, $message)
+        function render_post_with_image($username, $name, $image, $message)
         {
             echo "           
                     <div class='card gedf-card m-md-5 mt-2'>
@@ -91,8 +93,35 @@
                             </div>
                         </div>
                         <div class='card-body'>
-                            <div class='text-muted h7 mb-2'> <i class='fa fa-clock-o'></i>10 min ago</div>
                             <img class='rounded card-img' src='data:image/jpg;base64, {$image}' />
+                            <p class='m-2 card-text'>
+                                <h5> {$message} </h5>
+                                
+                            </p>
+                        </div>
+                    </div>
+            
+        ";
+        }
+        function render_post_no_image($username, $name, $message)
+        {
+            echo "           
+                    <div class='card gedf-card m-md-5 mt-2'>
+                        <div class='card-header'>
+                            <div class='d-flex justify-content-between align-items-center'>
+                                <div class='d-flex justify-content-between align-items-center'>
+                                    <div class='mr-2'>
+                                        <img class='rounded-circle' width='45' src='https://picsum.photos/50/50' alt=''>
+                                    </div>
+                                    <div class='ml-2'>
+                                        <div class='h5 m-0'>@{$username}</div>
+                                        <div class='h7 text-muted'>{$name}</div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class='card-body'>
                             <p class='m-2 card-text'>
                                 <h5> {$message} </h5>
                                 
@@ -110,7 +139,10 @@
             <div class='col-12 col-md-8 row-content'>";
         while ($post) {
             $userInfoPost = fetch_user_id($post['idUsuario']);
-            render_post($userInfoPost['username'], $userInfoPost['nome'], base64_encode($post['image']), $post['message']);
+            if (base64_encode($post['image']) != null)
+                render_post_with_image($userInfoPost['username'], $userInfoPost['name'], base64_encode($post['image']), $post['message']);
+            else
+                render_post_no_image($userInfoPost['username'], $userInfoPost['name'], $post['message']);
             $post = mysqli_fetch_assoc($res);
         }
         echo "
