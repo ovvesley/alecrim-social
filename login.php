@@ -1,12 +1,5 @@
 <!DOCTYPE html>
-<?php
-session_start();
-require("./db_requests.php");
-$login_password = $_POST['password'];
-$login_username = $_POST['username'];
-?>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +12,6 @@ $login_username = $_POST['username'];
 <style>
     @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900");
     @import url("https://cdn.linearicons.com/free/1.0.0/icon-font.min.css");
-
     body {
         font-family: 'Montserrat', sans-serif;
         background: #112233;
@@ -27,6 +19,35 @@ $login_username = $_POST['username'];
 </style>
 
 <body>
+    <?php
+    require("./db_requests.php");
+    $login_password = $_POST['password'];
+    $login_username = $_POST['username'];
+    $login_button = $_POST['loginButton'];
+    function isSubscript($login_username, $login_password)
+    {
+
+        $queryVerificar = "SELECT * FROM Usuario WHERE username ='$login_username' AND senha = '$login_password'";
+        $res = query_dataBase("alecrim_social", $queryVerificar);
+        if (mysqli_fetch_assoc($res)) {
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+    $status_login = (isSubscript($login_username, $login_password));
+    echo $status_login . "aaaaaaaa";
+    if ($status_login == false) {
+        header("location: registerFailed.html");
+    } else {
+        session_start();
+        $USER_INFO = fetch_user($login_username);
+        var_dump($USER_INFO);
+    }
+
+    ?>
+
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
         <a class="navbar-brand" href="#">Alecrim</a>
         <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">

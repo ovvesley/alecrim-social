@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -76,7 +74,7 @@
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-center mt-3 login_container">
-                                    <button type="submit" id="loginButton" name="button"
+                                    <button type="submit" id="loginButton" name="loginButton"
                                         class="btn login_btn">Login</button>
                                 </div>
                             </form>
