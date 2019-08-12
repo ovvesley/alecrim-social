@@ -19,6 +19,15 @@
         font-family: 'Montserrat', sans-serif;
         background: #112233;
     }
+
+    #loginButton {
+        background-color: white;
+
+    }
+
+    .custom-control-label {
+        color: white;
+    }
 </style>
 
 <body>
@@ -50,18 +59,16 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-center mt-3 login_container">
-                            <button type="submit" name="button" class="btn login_btn">Login</button>
+                            <button type="submit" id="loginButton" name="button" class="btn login_btn">Login</button>
                         </div>
                     </form>
-
                 </div>
-
-
             </div>
         </div>
     </div>
-
+    <script src="lib/js/jquery-3.4.1.min.js"></script>
     <script src="lib/js/bootstrap.min.js"></script>
+    <script src="lib/js/popper.min.js"></script>
     <script src="lib/js/mdb.min.js"></script>
 </body>
 

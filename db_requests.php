@@ -1,5 +1,5 @@
 <?php
-echo "$login_password /// $login_username";
+
 function exibir_mensagem($login_username)
 {
     connect_dataBase($login_username, $login_password);

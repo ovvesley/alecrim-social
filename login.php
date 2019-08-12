@@ -54,11 +54,6 @@ $login_username = $_POST['username'];
     </nav>
 
     <?php
-    echo "$login_password /// $login_username";
-    // function exibir_mensagem($login_username)
-    // {
-    //     connect_dataBase($login_username, $login_password);
-    // }
 
 
 
@@ -82,13 +77,12 @@ $login_username = $_POST['username'];
     }
     ?>
 
-    <i class="fa fa-cloud-upload" aria-hidden="true"></i>
     <div class="container">
         <?php
         function render_post($username, $name, $image, $message)
         {
             echo "           
-                    <div class='card gedf-card'>
+                    <div class='card gedf-card m-md-5 mt-2'>
                         <div class='card-header'>
                             <div class='d-flex justify-content-between align-items-center'>
                                 <div class='d-flex justify-content-between align-items-center'>
@@ -100,13 +94,7 @@ $login_username = $_POST['username'];
                                         <div class='h7 text-muted'>{$name}</div>
                                     </div>
                                 </div>
-                                <div>
-                                    <div class='dropdown'>
-                                        <button class='btn btn-link dropdown-toggle' type='button' id='gedf-drop1' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-                                            <i class='fa fa-ellipsis-h'></i>
-                                        </button>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
                         <div class='card-body'>
@@ -139,10 +127,7 @@ $login_username = $_POST['username'];
 
 
 
-        <script src="lib/js/jquery-3.4.1.min.js"></script>
-        <script src="lib/js/bootstrap.min.js"></script>
-        <script src="lib/js/popper.min.js"></script>
-        <script src="lib/js/mdb.min.js"></script>
+
 
         <!-- Modal -->
 
@@ -209,6 +194,10 @@ $login_username = $_POST['username'];
 
 
 
+        <script src="lib/js/jquery-3.4.1.min.js"></script>
+        <script src="lib/js/bootstrap.min.js"></script>
+        <script src="lib/js/popper.min.js"></script>
+        <script src="lib/js/mdb.min.js"></script>
 </body>
 
 </html>
