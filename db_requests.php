@@ -30,7 +30,7 @@ function convert_image_to_blob($image)
 function db_select_post()
 {
     // header("content-type:image/jpeg");
-    $select = "select * from Postagem";
+    $select = "select * from Postagem ORDER BY idPostagem DESC";
     $res = query_dataBase("alecrim_social", $select);
     
     return $res;
