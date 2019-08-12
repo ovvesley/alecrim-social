@@ -32,5 +32,6 @@ function db_select_post()
     // header("content-type:image/jpeg");
     $select = "select * from Postagem";
     $res = query_dataBase("alecrim_social", $select);
+    
     return $res;
 }
