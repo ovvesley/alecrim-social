@@ -132,11 +132,13 @@
         }
         $res = db_select_post();
         $post = mysqli_fetch_assoc($res);
+        
         echo "
             <div class='row d-flex justify-content-center '>
             <div class='col-12 col-md-8 row-content'>";
         while ($post) {
-            render_post("vvesley", "Wesley", base64_encode($post['image']), $post['message']);
+            $userInfoPost = fetch_user_id($post['idUsuario']);
+            render_post($userInfoPost['username'],$userInfoPost['nome'], base64_encode($post['image']), $post['message']);
             $post = mysqli_fetch_assoc($res);
         }
         echo "

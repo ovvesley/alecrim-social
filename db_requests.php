@@ -46,3 +46,15 @@ function fetch_user($username)
         "username"   =>  $arrRes['username'],
     );
 }
+function fetch_user_id($userId)
+{
+    $queryVerificar = "SELECT * FROM Usuario WHERE idUsuario ='$userId'";
+    $res = query_dataBase("alecrim_social", $queryVerificar);
+    $arrRes = mysqli_fetch_assoc($res);
+    
+    return array(
+        "userid" => intval($arrRes['idUsuario']),
+        "name" => $arrRes['nome'],
+        "username"   =>  $arrRes['username'],
+    );
+}
