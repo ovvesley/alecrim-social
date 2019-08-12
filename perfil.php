@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <?php
 session_start();
-$login_password = $_POST['password'];
-$login_username = $_POST['username'];
-var_dump($_SESSION['USER_INFO']);
-
+$valueSession = checkSession($_SESSION['USER_INFO']);
+require("./db_requests.php");
+function checkSession($USER_INFO)
+{
+    if ($USER_INFO) {
+        var_dump($USER_INFO);
+        echo ('SESSÂO EXISTENTE');
+        return true;
+    } else {
+        header("location: registerFailed.html");
+        return false;
+    }
+}
 ?>
 <html lang="en">
 
@@ -42,7 +51,7 @@ var_dump($_SESSION['USER_INFO']);
         <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav m-auto mt-2 mt-lg-0">
                 <li class="nav-item ">
-                    <a class="nav-link" href="./login.php">Feed</a>
+                    <a class="nav-link" href="./feed.php">Feed</a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link fa fa-plus mt-2" id="addPostagemModal" href="#"></a>
