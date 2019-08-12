@@ -1,5 +1,22 @@
 <!DOCTYPE html>
+<?php
+session_start();
+$valueSession = checkSession($_SESSION['USER_INFO']);
+require("./db_requests.php");
+function checkSession($USER_INFO)
+{
+    if ($USER_INFO) {
+        var_dump($USER_INFO);
+        echo ('SESSÂO EXISTENTE');
+        header("Location: feed.php");
+        return true;
+    } else {
+        return false;
+    }
+}
+?>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,12 +50,10 @@
     <div class="container d-flex justify-content-center h-100">
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
-                    aria-controls="pills-home" aria-selected="true">Login</a>
+                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Login</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
-                    aria-controls="pills-profile" aria-selected="false">Register</a>
+                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Register</a>
             </li>
         </ul>
     </div>
@@ -56,15 +71,13 @@
                                     <div class="input-group-append">
                                         <span class="input-group-text"><i class="fa fa-user"></i></span>
                                     </div>
-                                    <input type="text" name="username" class="form-control input_user" value=""
-                                        placeholder="username">
+                                    <input type="text" name="username" class="form-control input_user" value="" placeholder="username">
                                 </div>
                                 <div class="input-group mb-2">
                                     <div class="input-group-append">
                                         <span class="input-group-text"><i class="fa fa-key"></i></span>
                                     </div>
-                                    <input type="password" name="password" class="form-control input_pass" value=""
-                                        placeholder="password">
+                                    <input type="password" name="password" class="form-control input_pass" value="" placeholder="password">
                                 </div>
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox">
@@ -74,8 +87,7 @@
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-center mt-3 login_container">
-                                    <button type="submit" id="loginButton" name="loginButton"
-                                        class="btn login_btn">Login</button>
+                                    <button type="submit" id="loginButton" name="loginButton" class="btn login_btn">Login</button>
                                 </div>
                             </form>
                         </div>
@@ -92,26 +104,23 @@
                         <div class="d-flex justify-content-center form_container">
                             <form action="register.php" method="POST">
                                 <div class="input-group mb-3">
-                                    
-                                    <input type="text" name="nameRegister" class="form-control input_user" value=""
-                                        placeholder="name">
+
+                                    <input type="text" name="nameRegister" class="form-control input_user" value="" placeholder="name">
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-append">
                                         <span class="input-group-text"><i class="fa fa-user"></i></span>
                                     </div>
-                                    <input type="text" name="usernameRegister" class="form-control input_user" value=""
-                                        placeholder="username">
+                                    <input type="text" name="usernameRegister" class="form-control input_user" value="" placeholder="username">
                                 </div>
 
                                 <div class="input-group mb-2">
                                     <div class="input-group-append">
                                         <span class="input-group-text"><i class="fa fa-key"></i></span>
                                     </div>
-                                    <input type="password" name="passwordRegister" class="form-control input_pass" value=""
-                                        placeholder="password">
+                                    <input type="password" name="passwordRegister" class="form-control input_pass" value="" placeholder="password">
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="customControlInline">
@@ -120,8 +129,7 @@
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-center mt-3 login_container">
-                                    <button type="submit" id="loginButton" name="button"
-                                        class="btn login_btn">Login</button>
+                                    <button type="submit" id="loginButton" name="button" class="btn login_btn">Login</button>
                                 </div>
                             </form>
                         </div>

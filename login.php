@@ -23,7 +23,6 @@
     <?php
     session_start();
 
-
     require("./db_requests.php");
 
     $login_password = $_POST['password'];

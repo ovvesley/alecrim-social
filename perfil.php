@@ -14,6 +14,30 @@ function checkSession($USER_INFO)
         return false;
     }
 }
+function render_post($username, $name, $image, $message)
+{
+    echo "           
+                    <div class='card gedf-card m-2'>
+                        <div class='card-header'>
+                            <div class='d-flex align-items-center'>
+                                <div class='d-flex align-items-center'>
+                                    <div class=''>
+                                        <div class=' m-0'>@{$username}</div>
+                                        <div class=' text-muted'>{$name}</div>
+                                    </div>
+                                </div>                                
+                            </div>
+                        </div>
+                        <div class='card-body'>
+                            <img class='rounded card-img' src='data:image/jpg;base64, {$image}' />
+                            <p class='m-0 card-text'>
+                                <h5> {$message} </h5>                                
+                            </p>
+                        </div>
+                    </div>
+            
+        ";
+}
 ?>
 <html lang="en">
 
@@ -67,13 +91,38 @@ function checkSession($USER_INFO)
             ?>
         </span>
     </nav>
-    <i class="fa fa-cloud-upload" aria-hidden="true"></i>
 
 
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="row">
+                  
+                        <?php
+                        for ($i = 1; $i <= 10; $i++) {
+                            echo("  <div class='col-md-4 col-12'>");
+                            render_post("vvesly", 'Wesley Santos', null, "aaaasjkasssssssssssssaa");
+                            echo("</div>");
+                        }                       
 
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
+
+
+
+
+
+
+
+
+    <script src="lib/js/jquery-3.4.1.min.js"></script>
     <script src="lib/js/bootstrap.min.js"></script>
+    <script src="lib/js/popper.min.js"></script>
     <script src="lib/js/mdb.min.js"></script>
 </body>
 

@@ -46,7 +46,7 @@
         <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav m-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="./login.php">Feed</a>
+                    <a class="nav-link" href="./feed.php">Feed</a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link fa fa-plus mt-2" id="addPostagemModal" class="btn btn-primary" data-toggle="modal" data-target="#modalExemplo" href="#"></a>
@@ -56,6 +56,14 @@
                 </li>
             </ul>
         </div>
+        <span class="">
+            <form action="destruir.php">
+                <<button class="btn btn-sm">
+                    SAIR<span class="badge badge-warning "></span>
+                    </button>
+            </form>
+
+        </span>
         <span class="">Bem Vindo
             <?php
             echo $_SESSION['USER_INFO']['name'];
