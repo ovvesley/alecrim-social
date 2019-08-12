@@ -3,8 +3,11 @@
 session_start();
 $login_password = $_POST['password'];
 $login_username = $_POST['username'];
+var_dump($_SESSION['USER_INFO']);
+
 ?>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,13 +21,12 @@ $login_username = $_POST['username'];
 <style>
     @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900");
     @import url("https://cdn.linearicons.com/free/1.0.0/icon-font.min.css");
+
     body {
         font-family: 'Montserrat', sans-serif;
         background: #112233;
-        
-    }
-    
 
+    }
 </style>
 
 
@@ -57,9 +59,9 @@ $login_username = $_POST['username'];
         </span>
     </nav>
     <i class="fa fa-cloud-upload" aria-hidden="true"></i>
-    
 
-    
+
+
     </div>
 
     <script src="lib/js/bootstrap.min.js"></script>
