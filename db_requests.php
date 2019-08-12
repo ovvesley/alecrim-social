@@ -1,5 +1,4 @@
 <?php
-
 function exibir_mensagem($login_username)
 {
     connect_dataBase($login_username, $login_password);
@@ -31,7 +30,6 @@ function db_select_post()
 {
     // header("content-type:image/jpeg");
     $select = "select * from Postagem ORDER BY idPostagem DESC";
-    $res = query_dataBase("alecrim_social", $select);
-    
+    $res = query_dataBase("alecrim_social", $select);    
     return $res;
 }
