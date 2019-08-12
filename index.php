@@ -11,6 +11,16 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
+<style>
+    @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900");
+    @import url("https://cdn.linearicons.com/free/1.0.0/icon-font.min.css");
+
+    body {
+        font-family: 'Montserrat', sans-serif;
+        background: #112233;
+    }
+</style>
+
 <body>
     <div class="container h-100">
         <div class="d-flex justify-content-center h-100">

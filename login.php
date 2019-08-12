@@ -15,6 +15,15 @@ $login_username = $_POST['username'];
     <link rel="stylesheet" href="lib/css/mdb.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+<style>
+    @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900");
+    @import url("https://cdn.linearicons.com/free/1.0.0/icon-font.min.css");
+
+    body {
+        font-family: 'Montserrat', sans-serif;
+        background: #112233;
+    }
+</style>
 
 <body>
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
@@ -76,7 +85,6 @@ $login_username = $_POST['username'];
 
     <i class="fa fa-cloud-upload" aria-hidden="true"></i>
     <div class="container">
-
         <div class="row d-flex justify-content-center ">
             <div class="col-12 col-md-6 row-content">
                 <div class="card gedf-card">
@@ -97,12 +105,6 @@ $login_username = $_POST['username'];
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="fa fa-ellipsis-h"></i>
                                     </button>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="gedf-drop1">
-                                        <div class="h6 dropdown-header">Configuration</div>
-                                        <a class="dropdown-item" href="#">Save</a>
-                                        <a class="dropdown-item" href="#">Hide</a>
-                                        <a class="dropdown-item" href="#">Report</a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -121,36 +123,84 @@ $login_username = $_POST['username'];
                             sequi fuga quia quaerat cum, obcaecati hic, molestias minima iste voluptates.
                         </p>
                     </div>
-                    <div class="card-footer">
-                        <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
-                        <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
-                        <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+
+
+
     <script src="lib/js/jquery-3.4.1.min.js"></script>
     <script src="lib/js/bootstrap.min.js"></script>
     <script src="lib/js/popper.min.js"></script>
     <script src="lib/js/mdb.min.js"></script>
+
     <!-- Modal -->
+
     <div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Título do modal</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Nova Publicação</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary">Salvar mudanças</button>
-                </div>
+                <form action="upload.php" method="post" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="card gedf-card">
+                            <div class="card-header">
+                                <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="posts-tab" data-toggle="tab" href="#posts"
+                                            role="tab" aria-controls="posts" aria-selected="true">Make
+                                            a publication </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="images-tab" data-toggle="tab" role="tab"
+                                            aria-controls="images" aria-selected="false" href="#images">Images</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="posts" role="tabpanel"
+                                        aria-labelledby="posts-tab">
+                                        <div class="form-group">
+                                            <label class="sr-only" for="message">post</label>
+                                            <textarea class="form-control" id="message" rows="3"
+                                                placeholder="What are you thinking?" name="message"></textarea>
+                                        </div>
+
+                                    </div>
+                                    <div class="tab-pane fade" id="images" role="tabpanel" aria-labelledby="images-tab">
+                                        <div class="form-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" name="imageToUpload"
+                                                    id="imageToUpload">
+                                                <label class="custom-file-label" for="customFile">Upload image</label>
+                                            </div>
+                                        </div>
+                                        <div class="py-4"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="modal-footer">
+                        <div class="btn-toolbar justify-content-between">
+                            <div class="btn-group">
+                                <button type="submit" class="btn btn-primary">share</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
