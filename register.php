@@ -25,7 +25,7 @@ $name = $_POST['nameRegister'];
 $senha = $_POST['passwordRegister'];
 
 $query_select = "SELECT username FROM Usuario WHERE username = '$username'";
-$res = query_dataBase("alecrim_social", $query_select);
+$res = query_dataBase("1166807", $query_select);
 $array = mysqli_fetch_array($res);
 $usernameArray = $array['username'];
 if ($username == "" || $username == null) {
@@ -45,7 +45,7 @@ if ($username == "" || $username == null) {
         ";
     } else {
         $queryInsert = "INSERT INTO Usuario (nome, username, senha) VALUES ('$name','$username','$senha')";
-        $resInsert = query_dataBase("alecrim_social", $queryInsert);
+        $resInsert = query_dataBase("1166807", $queryInsert);
         if ($resInsert) {
             echo " 
             <script language='javascript' type='text/javascript'>

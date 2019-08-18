@@ -109,7 +109,7 @@ function render_post_no_image($username, $name, $message)
                     <a class="nav-link" href="./perfil.php">Minhas Publicações<span class="sr-only">(current)</span></a>
                 </li>
                 <form action="destruir.php">
-                    <button class="btn btn-sm">
+                    <button class="btn btn-sm d-block d-md-none">
                         SAIR<span class="badge badge-warning "></span>
                     </button>
                 </form>

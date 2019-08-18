@@ -28,7 +28,7 @@ function create_post($userid)
 function insert_post($postagem)
 {
     $insert = "INSERT INTO `Postagem`(`message`, `image`, `idUsuario`) VALUES ('{$postagem['message']}', '{$postagem['image']}', {$postagem['userid']})";
-    return query_dataBase("alecrim_social", $insert);
+    return query_dataBase("1166807", $insert);
 }
 $postagem = create_post($USER_INFO['userid']);
 insert_post($postagem);

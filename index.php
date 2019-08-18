@@ -6,7 +6,6 @@ require("./db_requests.php");
 function checkSession($USER_INFO)
 {
     if ($USER_INFO) {
-        var_dump($USER_INFO);
         echo ('SESSÂO EXISTENTE');
         header("Location: feed.php");
         return true;

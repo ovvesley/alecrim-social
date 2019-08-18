@@ -31,7 +31,7 @@
     function isSubscript($login_username, $login_password)
     {
         $queryVerificar = "SELECT * FROM Usuario WHERE username ='$login_username' AND senha = '$login_password'";
-        $res = query_dataBase("alecrim_social", $queryVerificar);
+        $res = query_dataBase("1166807", $queryVerificar);
         if (mysqli_fetch_assoc($res)) {
             return true;
         } else {

@@ -44,25 +44,25 @@
         <div class="collapse navbar-collapse" id="collapsibleNavId">
             <ul class="navbar-nav m-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="./feed.php">Feed</a>
+                    <a class="nav-link " href="./feed.php">Feed</a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link" id="addPostagemModal" class="btn btn-primary d-flex align-self-center" data-toggle="modal" data-target="#modalExemplo" href="#">
-                        <span class=" fa fa-plus">                            
+                        <span class=" fa fa-plus">
                         </span>
-
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item ">
                     <a class="nav-link" href="./perfil.php">Minhas Publicações<span class="sr-only">(current)</span></a>
                 </li>
+
             </ul>
         </div>
         <span class="">
             <form action="destruir.php">
                 <button class="btn btn-sm">
                     SAIR<span class="badge badge-warning "></span>
-                    </button>
+                </button>
             </form>
 
         </span>
@@ -82,7 +82,6 @@
                             <div class='d-flex justify-content-between align-items-center'>
                                 <div class='d-flex justify-content-between align-items-center'>
                                     <div class='mr-2'>
-                                        <img class='rounded-circle' width='45' src='https://picsum.photos/50/50' alt=''>
                                     </div>
                                     <div class='ml-2'>
                                         <div class='h5 m-0'>@{$username}</div>
@@ -111,7 +110,6 @@
                             <div class='d-flex justify-content-between align-items-center'>
                                 <div class='d-flex justify-content-between align-items-center'>
                                     <div class='mr-2'>
-                                        <img class='rounded-circle' width='45' src='https://picsum.photos/50/50' alt=''>
                                     </div>
                                     <div class='ml-2'>
                                         <div class='h5 m-0'>@{$username}</div>

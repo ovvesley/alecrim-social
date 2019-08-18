@@ -7,7 +7,7 @@ function query_dataBase($banco, $query)
 {
     $host = "localhost";
     $usuario = "vvesley";
-    $senha = "1334";
+    $senha = "11111111";
     $connect = mysqli_connect($host, $usuario, $senha, $banco);
     if (!$connect) {
         echo $mysqli_error($connect);
@@ -30,7 +30,7 @@ function db_select_post()
 {
     // header("content-type:image/jpeg");
     $select = "select * from Postagem ORDER BY idPostagem DESC";
-    $res = query_dataBase("alecrim_social", $select);
+    $res = query_dataBase("1166807", $select);
     return $res;
 }
 
@@ -38,16 +38,15 @@ function db_select_my_post($idUsuario)
 {
     // header("content-type:image/jpeg");
     $select = "SELECT * FROM Postagem WHERE idUsuario  ='$idUsuario' ORDER BY idPostagem DESC";
-    $res = query_dataBase("alecrim_social", $select);
+    $res = query_dataBase("1166807", $select);
     return $res;
 }
 
 function fetch_user($username)
 {
     $queryVerificar = "SELECT * FROM Usuario WHERE username ='$username'";
-    $res = query_dataBase("alecrim_social", $queryVerificar);
-    $arrRes = mysqli_fetch_assoc($res);
-    
+    $res = query_dataBase("1166807", $queryVerificar);
+    $arrRes = mysqli_fetch_assoc($res);    
     return array(
         "userid" => intval($arrRes['idUsuario']),
         "name" => $arrRes['nome'],
@@ -57,7 +56,7 @@ function fetch_user($username)
 function fetch_user_id($userId)
 {
     $queryVerificar = "SELECT * FROM Usuario WHERE idUsuario ='$userId'";
-    $res = query_dataBase("alecrim_social", $queryVerificar);
+    $res = query_dataBase("1166807", $queryVerificar);
     $arrRes = mysqli_fetch_assoc($res);
     
     return array(
