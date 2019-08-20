@@ -31,6 +31,12 @@ alecrim-social/
     ...
 ```
 
+<p align="center"> 
+  Versão Web
+  <img src="https://github.com/vvesly/alecrim-social/blob/master/screen-alecrim/Captura%20de%20tela%20de%202019-08-20%2000-32-36.png?raw=true" alt="Web">
+</p>
+
+
 
 ## Verificando Sessão:
 
@@ -74,6 +80,12 @@ session_start();
     }
     ?>
 ```
+
+<p align="center"> Versão Mobile </p>
+
+<p align="center"> 
+  <img src="https://github.com/vvesly/alecrim-social/blob/master/screen-alecrim/Captura%20de%20tela%20de%202019-08-20%2000-31-42.png?raw=true" alt="Mobile">
+</p>
 
 ## Feed:
 ```text
