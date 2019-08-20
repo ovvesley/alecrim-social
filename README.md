@@ -1,10 +1,12 @@
 <p align="center">
-  <a href="https://example.com/">
+  <a href="http://serverboladao.eu5.org/">
     <img src="http://serverboladao.eu5.org/favicon.ico" alt="Alecrim Social" width=72 height=72>
   </a>
-
+  
   <h3 align="center">Alecrim Social</h3>
-
+  
+  
+<p align="center"><a href="http://serverboladao.eu5.org/">Acesse Aqui</a> </p>
   <p align="center">
     a plant social network.
     <br>
