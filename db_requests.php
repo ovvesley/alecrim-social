@@ -5,9 +5,7 @@ function exibir_mensagem($login_username)
 }
 function query_dataBase($banco, $query)
 {
-    $host = "localhost";
-    $usuario = "vvesley";
-    $senha = "11111111";
+    require("./credential.credrential/credential.php");
     $connect = mysqli_connect($host, $usuario, $senha, $banco);
     if (!$connect) {
         echo $mysqli_error($connect);
