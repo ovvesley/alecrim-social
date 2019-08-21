@@ -150,7 +150,7 @@ Verificação no login:
 Registro Verificação:
 A[2] 
 ```text
-Vrificação de usuario existente no registro com mensagem de erro para usuario ja cadastrados ou senhas não validas.
+Verificação de usuario existente no registro com mensagem de erro para usuario ja cadastrados ou senhas não validas.
 ```
 
 ```php
