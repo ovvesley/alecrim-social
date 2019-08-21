@@ -96,6 +96,111 @@ Mostrando todos as tuplas de forma descrescente.
 ```mysql
 "SELECT * FROM Postagem WHERE idUsuario  ='$idUsuario' ORDER BY idPostagem DESC";
 ```
+## Login Usuario e Verificações:
+```text
+Para verificação de usuario existente no registro A[2]. E verificação do Login A[1]
+```
+Verificação no login:
+[A1]
+```php
+    $login_password = $_POST['password'];
+    $login_username = $_POST['username'];
+    $login_button = $_POST['loginButton'];
+    function isSubscript($login_username, $login_password)
+    {
+        $queryVerificar = "SELECT * FROM Usuario WHERE username ='$login_username' AND senha = '$login_password'";
+        // query_dataBase
+        $res = query_dataBase("1166807", $queryVerificar);
+        
+        if (mysqli_fetch_assoc($res)) {
+            return true;
+        } else {
+            header("Location: registerFailed.html");
+            return false;
+        }
+    }
+    $status_login = (isSubscript($login_username, $login_password));
+    echo $status_login;
+    if ($status_login == false) {
+        header("location: registerFailed.html");
+    }else{
+        $_SESSION['USER_INFO'] = fetch_user($login_username);
+        header("location: feed.php");
+    }
+
+```
+
+```php
+   function query_dataBase($banco, $query)
+{
+    require("./credential.credrential/credential.php");
+    $connect = mysqli_connect($host, $usuario, $senha, $banco);
+    if (!$connect) {
+        echo $mysqli_error($connect);
+    }
+    $resposta = mysqli_query($connect, $query);
+    if ($resposta) {
+        return $resposta;
+    } else {
+        echo mysqli_error($connect);
+    }
+}
+```
+
+Registro Verificação:
+A[2] 
+```text
+Vrificação de usuario existente no registro com mensagem de erro para usuario ja cadastrados ou senhas não validas.
+```
+
+```php
+$username = $_POST['usernameRegister'];
+$name = $_POST['nameRegister'];
+$senha = $_POST['passwordRegister'];
+$query_select = "SELECT username FROM Usuario WHERE username = '$username'";
+$res = query_dataBase("1166807", $query_select);
+$array = mysqli_fetch_array($res);
+$usernameArray = $array['username'];
+if ($username == "" || $username == null) {
+    echo "
+    <script language='javascript' type='text/javascript'>
+        alert('O campo login deve ser preenchido');window.location.href='
+        cadastro.html';
+        window.location.href = 'index.php'
+    </script>";
+} else {
+    if ($usernameArray == $username) {
+        echo "
+        <script language='javascript' type='text/javascript'>
+            alert('Esse login já existe');
+            window.location.href = 'index.php'
+        </script>
+        ";
+    } else {
+        $queryInsert = "INSERT INTO Usuario (nome, username, senha) VALUES ('$name','$username','$senha')";
+        $resInsert = query_dataBase("1166807", $queryInsert);
+        if ($resInsert) {
+            echo " 
+            <script language='javascript' type='text/javascript'>
+                alert('Usuário cadastrado com sucesso!');
+                window.location.href = 'index.php'
+          </script>
+          ";
+        } else {
+            echo "<script language='javascript' type='text/javascript'>
+                        alert('Não foi possível cadastrar esse usuário')
+                        window.location.href = 'index.php'
+                  </script>
+          
+          ";
+        }
+```
+
+
+
+
+
+
 
 Modelo Lógico Banco de Dados mysql:
 
