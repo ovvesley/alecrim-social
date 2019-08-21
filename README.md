@@ -96,7 +96,7 @@ Mostrando todos as tuplas de forma descrescente.
 ```mysql
 "SELECT * FROM Postagem WHERE idUsuario  ='$idUsuario' ORDER BY idPostagem DESC";
 ```
-## Login Usuario e Verificações:
+## Login Usuario, Registro e Verificações:
 ```text
 Para verificação de usuario existente no registro A[2]. E verificação do Login A[1]
 ```
